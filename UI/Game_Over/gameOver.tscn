@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/gameOver.png" type="Texture" id=1]
+[ext_resource path="res://UI/Game_Over/gameOver.gd" type="Script" id=2]
+[ext_resource path="res://assets/filter.png" type="Texture" id=3]
+[ext_resource path="res://assets/Sounds/guiExitClick.wav" type="AudioStream" id=4]
+
+[node name="gameOver" type="Node2D"]
+z_index = 4
+script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="filter" type="TextureRect" parent="CanvasLayer"]
+visible = false
+margin_right = 1280.0
+margin_bottom = 720.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="back" type="TextureRect" parent="CanvasLayer"]
+visible = false
+margin_right = 1280.0
+margin_bottom = 720.0
+rect_scale = Vector2( 0.80079, 0.834669 )
+mouse_filter = 2
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="respawn" type="TextureButton" parent="CanvasLayer"]
+visible = false
+margin_left = 397.0
+margin_top = 344.0
+margin_right = 616.0
+margin_bottom = 427.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="guiExit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+[connection signal="visibility_changed" from="CanvasLayer/back" to="." method="_on_back_visibility_changed"]
+[connection signal="pressed" from="CanvasLayer/respawn" to="." method="_on_respawn_pressed"]
+[connection signal="finished" from="guiExit" to="." method="_on_guiExit_finished"]

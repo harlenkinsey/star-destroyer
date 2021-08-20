@@ -1,0 +1,89 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/arrowButton.png" type="Texture" id=1]
+[ext_resource path="res://UI/Controls/Controls.gd" type="Script" id=2]
+[ext_resource path="res://assets/fireUnder.png" type="Texture" id=3]
+[ext_resource path="res://assets/fireProgress.png" type="Texture" id=4]
+[ext_resource path="res://assets/Sounds/laser.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/Sounds/engine.wav" type="AudioStream" id=6]
+[ext_resource path="res://UI/Controls/Left_Arrow.gd" type="Script" id=7]
+[ext_resource path="res://UI/Controls/Up_Arrow.gd" type="Script" id=8]
+[ext_resource path="res://UI/Controls/Right_Arrow.gd" type="Script" id=9]
+
+[node name="Controls" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Left" type="TextureRect" parent="CanvasLayer"]
+margin_left = 24.6132
+margin_top = 451.828
+margin_right = 152.613
+margin_bottom = 579.828
+mouse_filter = 0
+texture = ExtResource( 1 )
+flip_h = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right" type="TextureRect" parent="CanvasLayer"]
+margin_left = 169.218
+margin_top = 449.347
+margin_right = 297.218
+margin_bottom = 577.347
+mouse_filter = 0
+texture = ExtResource( 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Forward" type="TextureRect" parent="CanvasLayer"]
+margin_left = 876.687
+margin_top = 576.439
+margin_right = 1004.69
+margin_bottom = 704.439
+rect_rotation = -90.0
+mouse_filter = 0
+texture = ExtResource( 1 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fire" type="TextureProgress" parent="CanvasLayer"]
+margin_left = 725.593
+margin_top = 442.352
+margin_right = 862.593
+margin_bottom = 578.352
+mouse_filter = 0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+fill_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="reloadTime" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="mainEngine" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -12.0
+pitch_scale = 0.73
+
+[node name="left" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -12.0
+pitch_scale = 0.73
+
+[node name="right" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -12.0
+pitch_scale = 0.73
+[connection signal="gui_input" from="CanvasLayer/Fire" to="." method="_on_Fire_gui_input"]
+[connection signal="timeout" from="reloadTime" to="." method="_on_reloadTime_timeout"]

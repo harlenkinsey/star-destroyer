@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/player.png" type="Texture" id=2]
+[ext_resource path="res://UI/Ship_Upgrades/ShipUpgradeUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Sounds/guiClick.wav" type="AudioStream" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 31.9888, 31.4505 )
+
+[sub_resource type="ParticlesMaterial" id=2]
+emission_shape = 1
+emission_sphere_radius = 1.0
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 50.0
+radial_accel = 40.0
+radial_accel_random = 1.0
+scale_random = 1.0
+color = Color( 0.0470588, 0.74902, 0.913725, 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 1
+emission_sphere_radius = 1.0
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = 20.0
+color = Color( 0.0470588, 0.74902, 0.913725, 1 )
+
+[node name="Player" type="KinematicBody2D"]
+z_index = 6
+input_pickable = true
+collision_layer = 5
+collision_mask = 5
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Player" type="Sprite" parent="."]
+position = Vector2( 0, -0.142609 )
+scale = Vector2( 0.683419, 0.664008 )
+z_index = 2
+texture = ExtResource( 2 )
+
+[node name="followPoint" type="Node2D" parent="."]
+position = Vector2( 0, -100 )
+
+[node name="mainBooster" type="Particles2D" parent="."]
+position = Vector2( 0, 19 )
+z_index = 1
+emitting = false
+amount = 500
+lifetime = 1.5
+speed_scale = 2.5
+process_material = SubResource( 2 )
+
+[node name="rightBooster" type="Particles2D" parent="."]
+position = Vector2( -3.68854, -21.0406 )
+rotation = 1.5708
+z_index = 1
+emitting = false
+amount = 50
+speed_scale = 2.0
+process_material = SubResource( 3 )
+
+[node name="leftBooster" type="Particles2D" parent="."]
+position = Vector2( 2.29868, -21.5039 )
+rotation = -1.5708
+z_index = 1
+emitting = false
+amount = 50
+speed_scale = 2.0
+process_material = SubResource( 3 )
+
+[node name="ShipUpgrades" parent="." instance=ExtResource( 3 )]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+smoothing_enabled = true
+
+[node name="tutTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="guiClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+[connection signal="input_event" from="." to="." method="_on_Player_input_event"]
+[connection signal="timeout" from="tutTimer" to="." method="_on_tutTimer_timeout"]

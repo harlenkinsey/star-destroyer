@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/nextArrow.png" type="Texture" id=1]
+[ext_resource path="res://assets/dialogBox.png" type="Texture" id=2]
+[ext_resource path="res://UI/Dialog_Box/DialogBox.gd" type="Script" id=3]
+[ext_resource path="res://fonts/ariial.tres" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/Sounds/msgNot.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/Sounds/guiClick.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/Sounds/guiExitClick.wav" type="AudioStream" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "arrow_float"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("nextArrow:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 637, 522 ), Vector2( 637, 527 ), Vector2( 637, 522 ) ]
+}
+
+[node name="DialogBox" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Back" type="TextureRect" parent="CanvasLayer"]
+margin_left = 321.515
+margin_top = 442.14
+margin_right = 712.516
+margin_bottom = 585.14
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="nextArrow" type="TextureRect" parent="CanvasLayer"]
+margin_left = 637.0
+margin_top = 522.0
+margin_right = 682.0
+margin_bottom = 562.001
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="TextureRect" parent="CanvasLayer"]
+margin_left = 340.84
+margin_top = 400.771
+margin_right = 463.839
+margin_bottom = 445.771
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialog" type="RichTextLabel" parent="CanvasLayer"]
+margin_left = 354.53
+margin_top = 478.227
+margin_right = 631.529
+margin_bottom = 565.227
+rect_min_size = Vector2( 276, 87 )
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 0.0470588, 0.74902, 0.913725, 1 )
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="arrowFloat" type="AnimationPlayer" parent="CanvasLayer"]
+playback_speed = 1.5
+method_call_mode = 1
+anims/arrow_float = SubResource( 2 )
+
+[node name="msgNot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="guiClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = 5.0
+
+[node name="guiExitTimer" type="Timer" parent="."]
+wait_time = 0.11
+one_shot = true
+
+[node name="guiExit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+[connection signal="gui_input" from="CanvasLayer/nextArrow" to="." method="_on_nextArrow_gui_input"]
+[connection signal="timeout" from="guiExitTimer" to="." method="_on_guiExitTimer_timeout"]

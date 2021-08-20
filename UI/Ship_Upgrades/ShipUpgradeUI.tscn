@@ -1,0 +1,416 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://assets/progressUnder.png" type="Texture" id=1]
+[ext_resource path="res://assets/progress.png" type="Texture" id=2]
+[ext_resource path="res://UI/Ship_Upgrades/ShipUpgradeUI.gd" type="Script" id=3]
+[ext_resource path="res://assets/filter.png" type="Texture" id=4]
+[ext_resource path="res://assets/upgradeUI.png" type="Texture" id=5]
+[ext_resource path="res://fonts/ariial.tres" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/uiToggleBright.png" type="Texture" id=7]
+[ext_resource path="res://assets/uiToggleDark.png" type="Texture" id=8]
+[ext_resource path="res://assets/repairUi.png" type="Texture" id=9]
+[ext_resource path="res://assets/Sounds/guiExitClick.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/Sounds/guiClick.wav" type="AudioStream" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 29
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 53
+font_data = ExtResource( 6 )
+
+[node name="ShipUpgrades" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 4
+scale = Vector2( 0.8, 0.834 )
+transform = Transform2D( 0.8, 0, 0, 0.834, 0, 0 )
+
+[node name="filter" type="TextureRect" parent="CanvasLayer"]
+visible = false
+margin_right = 1280.0
+margin_bottom = 720.0
+mouse_filter = 0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="TextureRect" parent="CanvasLayer"]
+visible = false
+margin_left = -1.25
+margin_top = 1.19904
+margin_right = 1278.75
+margin_bottom = 721.199
+mouse_filter = 0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x" type="TextureRect" parent="CanvasLayer"]
+visible = false
+margin_left = 1194.0
+margin_top = 28.0
+margin_right = 1246.0
+margin_bottom = 80.0
+mouse_filter = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shipHealth" type="TextureProgress" parent="CanvasLayer"]
+visible = false
+margin_left = 675.512
+margin_top = 163.484
+margin_right = 949.512
+margin_bottom = 221.484
+step = 10.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shipSpeed" type="TextureProgress" parent="CanvasLayer"]
+visible = false
+margin_left = 675.512
+margin_top = 235.528
+margin_right = 949.512
+margin_bottom = 293.528
+step = 10.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fuelConsumption" type="TextureProgress" parent="CanvasLayer"]
+visible = false
+margin_left = 675.512
+margin_top = 306.99
+margin_right = 949.512
+margin_bottom = 364.99
+step = 10.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rotationSpeed" type="TextureProgress" parent="CanvasLayer"]
+visible = false
+margin_left = 675.512
+margin_top = 376.396
+margin_right = 949.512
+margin_bottom = 434.396
+step = 10.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bulletDamage" type="TextureProgress" parent="CanvasLayer"]
+visible = false
+margin_left = 675.512
+margin_top = 450.496
+margin_right = 949.512
+margin_bottom = 508.496
+step = 10.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bulletSpeed" type="TextureProgress" parent="CanvasLayer"]
+visible = false
+margin_left = 675.512
+margin_top = 530.351
+margin_right = 949.512
+margin_bottom = 588.351
+step = 10.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="reloadTime" type="TextureProgress" parent="CanvasLayer"]
+visible = false
+margin_left = 675.512
+margin_top = 604.518
+margin_right = 949.512
+margin_bottom = 662.518
+step = 10.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shipHealthU" type="TextureButton" parent="CanvasLayer"]
+visible = false
+margin_left = 1163.44
+margin_top = 174.813
+margin_right = 1203.44
+margin_bottom = 214.813
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shipSpeedU" type="TextureButton" parent="CanvasLayer"]
+visible = false
+margin_left = 1164.69
+margin_top = 246.336
+margin_right = 1204.69
+margin_bottom = 286.336
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fuelConsumptionU" type="TextureButton" parent="CanvasLayer"]
+visible = false
+margin_left = 1164.89
+margin_top = 316.062
+margin_right = 1204.89
+margin_bottom = 356.062
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rotationSpeedU" type="TextureButton" parent="CanvasLayer"]
+visible = false
+margin_left = 1164.89
+margin_top = 387.385
+margin_right = 1204.89
+margin_bottom = 427.385
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bulletDamageU" type="TextureButton" parent="CanvasLayer"]
+visible = false
+margin_left = 1163.85
+margin_top = 461.107
+margin_right = 1203.85
+margin_bottom = 501.107
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bulletSpeedU" type="TextureButton" parent="CanvasLayer"]
+visible = false
+margin_left = 1164.48
+margin_top = 540.221
+margin_right = 1204.48
+margin_bottom = 580.221
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="reloadTimeU" type="TextureButton" parent="CanvasLayer"]
+visible = false
+margin_left = 1164.89
+margin_top = 615.341
+margin_right = 1204.89
+margin_bottom = 655.341
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shipHealthCost" type="RichTextLabel" parent="CanvasLayer"]
+visible = false
+margin_left = 981.656
+margin_top = 177.104
+margin_right = 1121.66
+margin_bottom = 217.104
+rect_min_size = Vector2( 140, 40 )
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 0.866667, 0.054902, 1, 1 )
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shipSpeedCost" type="RichTextLabel" parent="CanvasLayer"]
+visible = false
+margin_left = 981.656
+margin_top = 250.245
+margin_right = 1121.66
+margin_bottom = 290.245
+rect_min_size = Vector2( 140, 40 )
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 0.866667, 0.054902, 1, 1 )
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fuelConsumptionCost" type="RichTextLabel" parent="CanvasLayer"]
+visible = false
+margin_left = 981.656
+margin_top = 319.79
+margin_right = 1121.66
+margin_bottom = 359.79
+rect_min_size = Vector2( 140, 40 )
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 0.866667, 0.054902, 1, 1 )
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rotationSpeedCost" type="RichTextLabel" parent="CanvasLayer"]
+visible = false
+margin_left = 981.656
+margin_top = 390.533
+margin_right = 1121.66
+margin_bottom = 430.533
+rect_min_size = Vector2( 140, 40 )
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 0.866667, 0.054902, 1, 1 )
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bulletDamageCost" type="RichTextLabel" parent="CanvasLayer"]
+visible = false
+margin_left = 981.656
+margin_top = 463.675
+margin_right = 1121.66
+margin_bottom = 503.675
+rect_min_size = Vector2( 140, 40 )
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 0.866667, 0.054902, 1, 1 )
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bulletSpeedCost" type="RichTextLabel" parent="CanvasLayer"]
+visible = false
+margin_left = 981.656
+margin_top = 542.811
+margin_right = 1121.66
+margin_bottom = 582.811
+rect_min_size = Vector2( 140, 40 )
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 0.866667, 0.054902, 1, 1 )
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="reloadTimeCost" type="RichTextLabel" parent="CanvasLayer"]
+visible = false
+margin_left = 981.656
+margin_top = 618.351
+margin_right = 1121.66
+margin_bottom = 658.351
+rect_min_size = Vector2( 140, 40 )
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 0.866667, 0.054902, 1, 1 )
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="toggleBrightUp" type="TextureRect" parent="CanvasLayer"]
+visible = false
+margin_left = 1038.0
+margin_top = 38.0
+margin_right = 1088.0
+margin_bottom = 88.0
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="toggleDarkUp" type="TextureRect" parent="CanvasLayer"]
+visible = false
+margin_left = 1090.0
+margin_top = 38.0
+margin_right = 1140.0
+margin_bottom = 88.0
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="toggleBrightRe" type="TextureRect" parent="CanvasLayer"]
+visible = false
+margin_left = 1090.0
+margin_top = 38.0
+margin_right = 1140.0
+margin_bottom = 88.0
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="toggleDarkRe" type="TextureRect" parent="CanvasLayer"]
+visible = false
+margin_left = 1038.0
+margin_top = 38.0
+margin_right = 1088.0
+margin_bottom = 88.0
+rect_scale = Vector2( 0.75, 0.75 )
+mouse_filter = 0
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="repairBack" type="TextureRect" parent="CanvasLayer"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="repairCost" type="RichTextLabel" parent="CanvasLayer"]
+visible = false
+anchor_left = -0.00157756
+anchor_right = -0.00157756
+margin_left = 428.75
+margin_top = 331.597
+margin_right = 608.75
+margin_bottom = 401.597
+mouse_filter = 2
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 0.866667, 0.054902, 1, 1 )
+text = "E290"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="repair" type="TextureButton" parent="CanvasLayer"]
+visible = false
+margin_left = 648.0
+margin_top = 310.0
+margin_right = 875.0
+margin_bottom = 408.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="guiClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="guiExit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+[connection signal="gui_input" from="CanvasLayer/x" to="." method="_on_x_gui_input"]
+[connection signal="gui_input" from="CanvasLayer/toggleDarkUp" to="." method="_on_toggleDarkUp_gui_input"]
+[connection signal="gui_input" from="CanvasLayer/toggleDarkRe" to="." method="_on_toggleDarkRe_gui_input"]
+[connection signal="pressed" from="CanvasLayer/repair" to="." method="_on_repair_pressed"]

@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Drops/Fuel.gd" type="Script" id=1]
+[ext_resource path="res://assets/fuelDrop.png" type="Texture" id=2]
+[ext_resource path="res://assets/Sounds/synthPickup.wav" type="AudioStream" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 26.156
+
+[node name="Fuel" type="Node2D"]
+scale = Vector2( 0.2, 0.2 )
+z_index = 3
+script = ExtResource( 1 )
+
+[node name="fuel" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pickup" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickup"]
+position = Vector2( 26.5298, 25.5592 )
+shape = SubResource( 1 )
+
+[node name="Decay" type="Timer" parent="."]
+wait_time = 120.0
+autostart = true
+
+[node name="pickupSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = 8.0
+[connection signal="body_entered" from="pickup" to="." method="_on_pickup_body_entered"]
+[connection signal="timeout" from="Decay" to="." method="_on_Decay_timeout"]
+[connection signal="finished" from="pickupSound" to="." method="_on_pickupSound_finished"]

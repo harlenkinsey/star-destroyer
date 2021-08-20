@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/space.png" type="Texture" id=1]
+[ext_resource path="res://spaceBarrier/spaceBarrier.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 512.173, 513.091 )
+
+[node name="spaceBarrier" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="space" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 512.056, 511.661 )
+shape = SubResource( 1 )
